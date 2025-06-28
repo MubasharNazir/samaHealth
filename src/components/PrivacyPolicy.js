@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styles from '../styles/Legal.module.css';
 import Footer from './Footer';
 
@@ -14,7 +14,6 @@ function getActiveTab(location) {
 }
 
 export default function PrivacyPolicy() {
-  const navigate = useNavigate();
   const location = useLocation();
   const activeTab = getActiveTab(location);
   useEffect(() => {
