@@ -1,0 +1,89 @@
+:root {
+  --font-work-sans: "Work Sans", Arial, sans-serif;
+}
+
+.app {
+  font-family: var(--font-work-sans);
+  background: #a6a09b;
+  min-height: 100vh;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #fdf8ef;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 6rem;
+  box-shadow: 0 2px 8px rgba(30, 60, 90, 0.03);
+}
+
+.logo {
+  font-size: 1.7rem;
+  font-weight: 500;
+  color: #181c23;
+  letter-spacing: 1px;
+  font-family: var(--font-work-sans);
+}
+
+.logoImg {
+  height: 2.7rem;
+  width: auto;
+  margin-right: 0.7rem;
+  vertical-align: middle;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li a {
+  color: #1a202c;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.08rem;
+  transition: color 0.18s;
+}
+
+.navbar li a:hover {
+  color: #2e7dff;
+}
+
+.ctaBtn {
+  background: none;
+  border: 2px solid #181c23;
+  color: #181c23;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 1.3rem;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, border 0.18s;
+  font-family: var(--font-work-sans);
+}
+
+.ctaBtn:hover {
+  background: #181c23;
+  color: #fff;
+  border-color: #181c23;
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    padding: 1rem 1.2rem;
+  }
+  .logo {
+    font-size: 1.3rem;
+  }
+  .ctaBtn {
+    font-size: 0.97rem;
+    padding: 0.45rem 1rem;
+  }
+} 
