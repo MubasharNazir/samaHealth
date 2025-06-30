@@ -25,6 +25,12 @@
   color: #fff;
   margin-bottom: 0.7rem;
 }
+.logoImg {
+  max-width: 160px;
+  height: auto;
+  display: block;
+  margin-bottom: 0.7rem;
+}
 .tagline {
   font-size: 1.08rem;
   color: #ccc;
@@ -50,7 +56,7 @@
   transition: color 0.18s, opacity 0.18s;
 }
 .link:hover {
-  color: #ff3576;
+  color: #e6a481;
   opacity: 1;
 }
 
@@ -60,7 +66,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.1rem;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 .email {
   color: #fff;
@@ -69,14 +75,38 @@
 }
 .email a {
   color: #fff;
+  text-decoration: none;
+}
+.email a:hover {
+  color: #e6a481;
   text-decoration: underline;
 }
 .socials {
   display: flex;
   gap: 0.7rem;
+  margin-top: 0.5rem;
+}
+.social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #e6a481;
+  border-radius: 5px;
+  padding: 4px;
+  transition: border-color 0.18s, box-shadow 0.18s, background 0.18s;
+  background: transparent;
+  color: #fff;
 }
 .social svg {
   display: block;
+  width: 32px;
+  height: 32px;
+  fill: currentColor;
+  color: #fff;
+}
+.social:hover {
+  border-color: #fff;
+  box-shadow: 0 2px 8px rgba(230,164,129,0.18);
 }
 .ctaBtn {
   background: #e6a481;

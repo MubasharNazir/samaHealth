@@ -15,8 +15,12 @@ const Hero = () => (
         <div className={styles.downloadSection}>
           <div className={styles.downloadHeading}>Start feeling better — download the app today.</div>
           <div className={styles.storeIcons}>
-            <img src="/assets/apple.svg" alt="App Store" className={styles.storeBtnImg} />
-            <img src="/assets/playstore.svg" alt="Google Play" className={styles.storeBtnImg} />
+            <a href="https://apps.apple.com/ae/app/sama-health/id6447992708" target="_blank" rel="noopener noreferrer">
+              <img src="/assets/apple.svg" alt="App Store" className={styles.storeBtnImg} />
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.sama.health_life&pcampaignid=web_share" target="_blank" rel="noopener noreferrer">
+              <img src="/assets/playstore.svg" alt="Google Play" className={styles.storeBtnImg} />
+            </a>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Services from "./components/Services";
@@ -14,6 +14,7 @@ import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsAndConditions from './components/TermsAndConditions';
 import styles from "./styles/App.module.css";
 import { BrowserRouter as Router, Routes, Route, useNavigate, Link, useLocation } from 'react-router-dom';
+import Sidebar from './components/Sidebar';
 
 function getActiveTab(location) {
   if (location.pathname === '/') {
@@ -29,6 +30,7 @@ function MainApp() {
   const navigate = useNavigate();
   const location = useLocation();
   const activeTab = getActiveTab(location);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Scroll to section on hash change
   useEffect(() => {
@@ -41,7 +43,11 @@ function MainApp() {
         }, 0);
       }
     }
-  }, [location.hash]);
+    // Scroll to top when navigating to home (no hash)
+    if (location.pathname === '/' && !location.hash) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [location.hash, location.pathname]);
 
   return (
     <div className={styles.app}>
@@ -50,13 +56,33 @@ function MainApp() {
           <img src="/assets/logo.png" alt="Sama Health Logo" className={styles.logoImg} />
         </div>
         <ul className={styles.navTabs}>
-          <li><Link to="/" className={`${styles.tabLink} ${activeTab === 'home' ? styles.activeTab : ''}`}>Home</Link></li>
+          <li>
+            <Link
+              to="/"
+              className={`${styles.tabLink} ${activeTab === 'home' ? styles.activeTab : ''}`}
+              onClick={e => {
+                // If already on home, just scroll to top
+                if (location.pathname === '/' && !location.hash) {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+              }}
+            >
+              Home
+            </Link>
+          </li>
           <li><a href="/#testimonials" className={`${styles.tabLink} ${activeTab === 'testimonials' ? styles.activeTab : ''}`}>Testimonials</a></li>
           <li><a href="/#faqs" className={`${styles.tabLink} ${activeTab === 'faqs' ? styles.activeTab : ''}`}>FAQs</a></li>
         </ul>
         <button className={styles.ctaBtn} onClick={() => navigate('/book-call')}>
-          Book a free call with Sama Health
+          For Business
         </button>
+        <button className={styles.hamburger} onClick={() => setSidebarOpen(true)} aria-label="Open menu">
+          <span />
+          <span />
+          <span />
+        </button>
+        <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       </nav>
       <Hero />
       <TherapistStats />
