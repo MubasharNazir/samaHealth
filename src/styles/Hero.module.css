@@ -96,10 +96,10 @@
   }
   .heroImgSingle {
     width: 90vw;
-    max-width: 350px;
-    height: 180px;
+    max-width: 450px;
+    height: 160px;
     border-radius: 1rem;
-    padding: 1.2rem 0 0 0;
+    padding: 1.4rem 0 0 0;
     box-sizing: border-box;
     display: block;
     margin: 0;
