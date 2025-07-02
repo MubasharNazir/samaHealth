@@ -36,13 +36,13 @@ const PricingFAQ = () => {
 
   return (
     <section className={styles.section} id="faqs">
-      <div className={styles.pricingHeader}>
+      {/* <div className={styles.pricingHeader}>
         <h2 className={styles.title}>Pricing</h2>
         <p className={styles.subtitle}>
           Our therapists are available across different pricing tiers<br />
           based on their experience, with sessions starting at ₹2,500.
         </p>
-      </div>
+      </div> */}
       <div className={styles.faqHeader}>Frequently Asked Questions</div>
       <div className={styles.faqList}>
         {faqs.map((faq, idx) => (

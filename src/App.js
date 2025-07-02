@@ -15,6 +15,7 @@ import TermsAndConditions from './components/TermsAndConditions';
 import styles from "./styles/App.module.css";
 import { BrowserRouter as Router, Routes, Route, useNavigate, Link, useLocation } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
+import MeetupSection from './components/MeetupSection';
 
 function getActiveTab(location) {
   if (location.pathname === '/') {
@@ -91,6 +92,7 @@ function MainApp() {
       <div style={{ background: '#fdf8ef', height: '6rem', width: '100%' }} />
       <Testimonials />
       <PricingFAQ />
+      <MeetupSection />
       <Footer />
     </div>
   );

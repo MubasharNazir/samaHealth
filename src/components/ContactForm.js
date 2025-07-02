@@ -241,10 +241,11 @@ export default function ContactForm({ onClose }) {
       <section className={styles.companiesSection}>
         <h2 className={styles.companiesHeading}>Companies we have worked with</h2>
         <div className={styles.companiesLogosRow}>
-          <img src="/assets/company1.svg" alt="Company 1" className={styles.companyLogo} />
-          <img src="/assets/company2.svg" alt="Company 2" className={styles.companyLogo} />
-          <img src="/assets/company3.svg" alt="Company 3" className={styles.companyLogo} />
-          <img src="/assets/company4.svg" alt="Company 4" className={styles.companyLogo} />
+          <img src="/assets/aljazera.svg" alt="Company 1" className={styles.companyLogo} />
+          <img src="/assets/arabia.png" alt="Company 2" className={styles.companyLogo} />
+          <img src="/assets/khaleej-times-logo.svg" alt="Company 3" className={styles.companyLogo} />
+          <img src="/assets/edge.webp" alt="Company 4" className={styles.companyLogo} />
+          <img src="/assets/gulf-news-logo.png" alt="Company 4" className={styles.companyLogo} />
         </div>
       </section>
       <div ref={formRef} className={styles.formCard}>

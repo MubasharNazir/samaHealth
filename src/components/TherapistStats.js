@@ -3,23 +3,23 @@ import styles from "../styles/TherapistStats.module.css";
 
 const stats = [
   {
-    value: "3+",
-    label: "attempts to find the right fit."
+    value: "",
+    label: "McKinsey (2022) found that 66% of Middle East workers (many likely migrants) have experienced symptoms of poor mental health in their lifetime; ~33% report burnout"
   },
   {
-    value: "6.3",
-    label: "months on average to find a true match."
+    value: "",
+    label: "In GCC countries, an estimated 80% of mental health conditions go undiagnosed, significantly higher than 50% in other high-income nations"
   },
   {
-    value: "53%",
-    label: "of people feel judged by their therapist."
+    value: "",
+    label: "South Asian migrants in the GCC often lack social support, and mental illness remains taboo in many South Asian communities"
   }
 ];
 
 const TherapistStats = () => (
   <section className={styles.section}>
     <div className={styles.box}>
-      <h2 className={styles.heading}>Finding a good therapist is really really hard in India</h2>
+      <h2 className={styles.heading}>Why We Exist</h2>
       <div className={styles.statsRow}>
         {stats.map((stat, i) => (
           <div className={styles.stat} key={i}>

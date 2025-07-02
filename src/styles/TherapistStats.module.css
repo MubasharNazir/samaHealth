@@ -54,7 +54,8 @@
 .label {
   color: #7a6e65;
   font-size: 1.08rem;
-  text-align: center;
+  text-align: left;
+  
 }
 
 .divider {

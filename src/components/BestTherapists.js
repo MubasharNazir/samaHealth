@@ -12,8 +12,8 @@ const features = [
     imageFirst: true,
     title: "Get Your Mental Wellbeing Assessed.",
     text: [
-      "Not sure if therapy is for you? Chat to our specialists who will be able to help you assess your mental wellbeing.",
-      " The evaluation criteria will take psychological, biological, and social factors into account. Timely assessment of your mental health enables you to identify, respond, and manage the unique stressors that influence your everyday mental state and long-term mental wellbeing."
+      "At Sama Health, we onboard only the most qualified therapists through a rigorous vetting process, ensuring every therapist is experienced, empathetic, and skilled.",
+      "Not sure if therapy is for you? Contact our team and we will be able to help guide you on taking the first step.You can join our free community and speak to members who understand and have walked this journey before you start"
     ]
   },
   {
@@ -21,14 +21,14 @@ const features = [
     title: "Private And Secure.",
     text: [
       "Private and Secure. Mental health continues to be a taboo subject among billions of people worldwide.",
-      "While Sama Health cannot change the underlying social dynamics overnight, we can give you a secure, and private platform to seek expert help. With Sama Health, you get top-notch psychologist therapy right from the comforts of your home, 24x7. Mental well-being is a profoundly personal journey. Let's keep it that way."
+      "While Sama Health cannot change the underlying social dynamics overnight, we can give you a secure, and private platform to seek expert help. With Sama Health, you get top-notch psychologist therapy right from the comforts of your home, at a time that suits your schedule."
     ]
   },
   {
     imageFirst: true,
     title: "They are experienced and skilled.",
     text: [
-      "All therapists have 5+ years of experience and 200+ hours of training and clinical supervision."
+      "All our therapists are vetted, licensed and have several years of experience outside the 200+ hours of training and clinical supervision."
     ]
   }
 ];

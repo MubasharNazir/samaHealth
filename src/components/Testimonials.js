@@ -4,33 +4,33 @@ import styles from "../styles/Testimonials.module.css";
 const testimonials = [
   {
     quote:
-      "I have tried therapy in the past with many therapists, but Chaitali from Sama Health was the only one who helped me explore all aspects of my life, including my childhood. This has immensely helped me in connecting the dots. Every session feels like a treasure hunt because I discover something new about myself each time.",
-    author: "- Male, early 30s, Bengaluru"
+      "Being in Dubai, I never thought I’d find a therapist who spoke my language—literally and emotionally. This has been more healing than I expected.",
+    author: ""
   },
   {
     quote:
-      "My Sama Health therapist knows exactly what questions to ask, which helps me understand why I feel the way I do. For me, she's helped confront and work through decades of deep-seated fears and trauma – exactly what I was seeking in therapy.",
-    author: "- Female, early 30s, London"
+      "I booked my first session in between meetings. That’s how easy it was. And it actually helped me get through the week.",
+    author: ""
   },
   {
     quote:
-      "As a working professional, I've found therapy with Sama Health to be incredibly valuable for exploring my inner feelings and achieving a better work-life balance. I get clarity of thought after discussing stuff with my therapist. It helps me bring out few things on the surface and understand the root cause of it.",
-    author: "- Male, early 30s, Bengaluru"
+      "I live in Dubai and thought therapy would be expensive or confusing. But this was easy. And honestly, it felt safe.",
+    author: ""
   },
   {
     quote:
-      "I am someone who finds it very hard to describe how I am feeling. I always thought therapy wont work for me because of this reason. My Sama Health therapist made me draw with my left hand, to help me connect with my emotions and express what I was feeling. Over time, I have been able to get in touch with my emotions, which has helped me keep my anxiety in check.",
-    author: "- Female, late 20s, Mumbai"
+      "I am someone who finds it very hard to describe how I am feeling. I always thought therapy wont work for me because of this reason. My Sama Health therapist made me draw with my left hand, to help me connect with my emotions and express what I was feeling.",
+    author: ""
   },
   {
     quote:
-      "I had reached the point where stress was starting to impact every aspect of my life. After sessions with my therapist, I usually feel calm and relaxed. One unexpected yet incredible benefit has been her impact on my physical well-being. Sama Health therapy is helping me keep my shoulder pain in check.",
-    author: "- Male, early 30s, Bengaluru"
+      "I had reached the point where stress was starting to impact every aspect of my life. After sessions with my therapist, I usually feel calm and relaxed.",
+    author: ""
   },
   {
     quote:
       "Sama Health's therapists are so empathetic and skilled. I feel heard and understood in every session. Therapy has become a safe space for me to grow and heal.",
-    author: "- Female, late 20s, Delhi"
+    author: ""
   }
 ];
 
