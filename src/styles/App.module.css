@@ -6,6 +6,14 @@
   font-family: var(--font-work-sans);
   background: #fdf8ef;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .navbar {

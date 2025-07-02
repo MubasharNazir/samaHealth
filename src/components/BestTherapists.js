@@ -9,15 +9,13 @@ const featureImages = [
 
 const features = [
   {
-    imageFirst: true,
-    title: "Get Your Mental Wellbeing Assessed.",
+    title: "Get Started",
     text: [
-      "At Sama Health, we onboard only the most qualified therapists through a rigorous vetting process, ensuring every therapist is experienced, empathetic, and skilled.",
-      "Not sure if therapy is for you? Contact our team and we will be able to help guide you on taking the first step.You can join our free community and speak to members who understand and have walked this journey before you start"
+      "Not sure if therapy is for you? Contact our team and we will be able to help guide you on taking the first step.",
+      "You can join our free community and speak to members who understand and have walked this journey before you start."
     ]
   },
   {
-    imageFirst: false,
     title: "Private And Secure.",
     text: [
       "Private and Secure. Mental health continues to be a taboo subject among billions of people worldwide.",
@@ -25,7 +23,6 @@ const features = [
     ]
   },
   {
-    imageFirst: true,
     title: "They are experienced and skilled.",
     text: [
       "All our therapists are vetted, licensed and have several years of experience outside the 200+ hours of training and clinical supervision."
@@ -36,40 +33,42 @@ const features = [
 const BestTherapists = () => (
   <section className={styles.section}>
     <div className={styles.header}>
-      <h2 className={styles.title}>We solve this by onboarding only the "best" therapists</h2>
+      <h2 className={styles.title}>Wellness can not have a one size fits all approach</h2>
       <p className={styles.subtitle}>
         At Sama Health, we onboard only the most qualified therapists through a rigorous vetting process, ensuring every therapist is experienced, empathetic, and skilled.
       </p>
     </div>
     <div className={styles.features}>
       {features.map((feature, i) => (
-        <div className={styles.featureRow} key={i} style={i < features.length - 1 ? { marginBottom: '3.5rem' } : {}}>
-          {feature.imageFirst && (
-            <picture>
-              <source srcSet={featureImages[i].avif} type="image/avif" />
-              <img
-                src={featureImages[i].jpg}
-                alt={featureImages[i].alt}
-                className={styles.featureImg}
-              />
-            </picture>
-          )}
-          <div className={styles.featureText}>
+        <div
+          className={
+            i === 1
+              ? `${styles.featureRow} ${styles.featureRowReverse}`
+              : styles.featureRow
+          }
+          key={i}
+          style={i < features.length - 1 ? { marginBottom: '3.5rem' } : {}}
+        >
+          <div
+            className={
+              i === 1
+                ? `${styles.featureText} ${styles.featureTextRight}`
+                : styles.featureText
+            }
+          >
             <h3>{feature.title}</h3>
             {Array.isArray(feature.text)
               ? feature.text.map((p, idx) => <p key={idx}>{p}</p>)
               : <p>{feature.text}</p>}
           </div>
-          {!feature.imageFirst && (
-            <picture>
-              <source srcSet={featureImages[i].avif} type="image/avif" />
-              <img
-                src={featureImages[i].jpg}
-                alt={featureImages[i].alt}
-                className={styles.featureImg}
-              />
-            </picture>
-          )}
+          <picture>
+            <source srcSet={featureImages[i].avif} type="image/avif" />
+            <img
+              src={featureImages[i].jpg}
+              alt={featureImages[i].alt}
+              className={styles.featureImg}
+            />
+          </picture>
         </div>
       ))}
     </div>

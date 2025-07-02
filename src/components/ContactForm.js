@@ -210,11 +210,13 @@ export default function ContactForm({ onClose }) {
         <button className={stylesApp.ctaBtn} onClick={() => navigate('/book-call')}>
           For Business
         </button>
-        <button className={stylesApp.hamburger} onClick={() => setSidebarOpen(true)} aria-label="Open menu">
-          <span />
-          <span />
-          <span />
-        </button>
+        {!sidebarOpen && (
+          <button className={stylesApp.hamburger} onClick={() => setSidebarOpen(true)} aria-label="Open menu">
+            <span />
+            <span />
+            <span />
+          </button>
+        )}
         <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       </nav>
       <section className={styles.heroSectionContact}>

@@ -24,7 +24,7 @@ const Footer = () => (
         </div>
       </div>
       <div className={styles.colContact}>
-        <div className={styles.email}>Email: <a href="mailto:info@samahealth.life">info@samahealth.life</a></div>
+        <div className={styles.email}> <a href="mailto:info@samahealth.life">info@samahealth.life</a></div>
         <div className={styles.socials}>
           <a href="https://www.facebook.com/samahealth.life?mibextid=LQQJ4d" className={styles.social} aria-label="Facebook" target="_blank" rel="noopener noreferrer">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">

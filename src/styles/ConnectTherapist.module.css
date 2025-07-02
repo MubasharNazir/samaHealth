@@ -81,7 +81,14 @@
     align-items: center;
   }
   .step {
-    max-width: 100%;
+    max-width: auto;
     min-width: unset;
+    text-align: left;
+  }
+  .stepTitle {
+    text-align: left;
+  }
+  .stepDesc {
+    text-align: left;
   }
 } 

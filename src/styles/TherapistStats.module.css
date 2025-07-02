@@ -82,4 +82,24 @@
   .divider {
     display: none;
   }
+}
+
+@media (max-width: 700px) {
+  .box {
+    padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+  }
+  .statsRow {
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+  .stat {
+    padding: 0 0.2rem;
+  }
+  .heading {
+    font-size: 1.1rem;
+    padding-bottom: 0.7rem;
+  }
+  .label {
+    font-size: 0.97rem;
+  }
 } 

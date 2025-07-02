@@ -78,21 +78,25 @@ function MainApp() {
         <button className={styles.ctaBtn} onClick={() => navigate('/book-call')}>
           For Business
         </button>
-        <button className={styles.hamburger} onClick={() => setSidebarOpen(true)} aria-label="Open menu">
-          <span />
-          <span />
-          <span />
-        </button>
+        { !sidebarOpen && (
+          <button className={styles.hamburger} onClick={() => setSidebarOpen(true)} aria-label="Open menu">
+            <span />
+            <span />
+            <span />
+          </button>
+        )}
         <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       </nav>
-      <Hero />
-      <TherapistStats />
-      <BestTherapists />
-      <ConnectTherapist />
-      <div style={{ background: '#fdf8ef', height: '6rem', width: '100%' }} />
-      <Testimonials />
-      <PricingFAQ />
-      <MeetupSection />
+      <div className={styles.mainContent}>
+        <Hero />
+        <TherapistStats />
+        <BestTherapists />
+        <ConnectTherapist />
+        <div style={{ background: '#fdf8ef', height: '6rem', width: '100%' }} />
+        <Testimonials />
+        <PricingFAQ />
+        <MeetupSection />
+      </div>
       <Footer />
     </div>
   );
