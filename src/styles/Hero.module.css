@@ -95,17 +95,21 @@
     font-size: 2.5rem;
   }
   .heroImgSingle {
-    width: 100%;
-    max-width: 100vw;
-    height: auto;
+    width: 90vw;
+    max-width: 350px;
+    height: 180px;
     border-radius: 1rem;
-    padding: 0 1rem;
+    padding: 1.2rem 0 0 0;
     box-sizing: border-box;
     display: block;
-    margin: 0 auto;
+    margin: 0;
+    object-fit: cover;
   }
   .heroRightSingle {
     padding: 0 0.5rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
   }
 }
 
@@ -156,14 +160,14 @@
     padding-right: 0.2rem;
   }
   .heroImgSingle {
-    width: 100%;
-    max-width: 100vw;
-    min-width: 0;
+    width: 96vw;
+    max-width: 220px;
+    height: 120px;
     border-radius: 0.7rem;
-    margin: 0 auto;
+    margin: 0;
     display: block;
-    padding: 0 0.5rem;
-    box-sizing: border-box;
+    padding: 1rem 0 0 0;
+    object-fit: cover;
   }
 }
 
