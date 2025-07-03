@@ -309,7 +309,7 @@ export default function ContactForm({ onClose }) {
                       value={form.phoneNumber}
                       onChange={handleChange}
                       autoComplete="tel"
-                      placeholder="e.g. 501234567"
+                      placeholder=""
                       style={{
                         width: '120px',
                         minWidth: 0,
