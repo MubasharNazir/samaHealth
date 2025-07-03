@@ -1,7 +1,7 @@
 .footer {
   background: #111;
   color: #fff;
-  padding: 4rem 0 2rem 0;
+  padding: 4rem 2.5rem 2rem 2.5rem;
   font-size: 1.08rem;
 }
 
@@ -139,7 +139,18 @@
   margin-top: 0.5rem;
 }
 
+@media (max-width: 1200px) {
+  .footer {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
 @media (max-width: 900px) {
+  .footer {
+    font-size: 0.97rem;
+    padding: 2rem 1rem 1.2rem 1rem;
+  }
   .inner {
     gap: 1.2rem;
   }
@@ -150,16 +161,12 @@
   .logoImg {
     max-width: 90px;
   }
-  .footer {
-    font-size: 0.97rem;
-    padding: 2rem 0.5rem 1.2rem 0.5rem;
-  }
 }
 
 @media (max-width: 700px) {
   .footer {
     font-size: 0.93rem;
-    padding: 1.2rem 0.3rem 0.7rem 0.3rem;
+    padding: 1.2rem 0.7rem 0.7rem 0.7rem;
   }
   .inner {
     gap: 0.7rem;
@@ -191,6 +198,10 @@
 }
 
 @media (max-width: 500px) {
+  .footer {
+    font-size: 0.89rem;
+    padding: 0.7rem 0.2rem 0.5rem 0.2rem;
+  }
   .inner {
     flex-direction: column;
     align-items: stretch;
@@ -206,9 +217,5 @@
   }
   .logoImg {
     max-width: 48px;
-  }
-  .footer {
-    font-size: 0.89rem;
-    padding: 0.7rem 0.1rem 0.5rem 0.1rem;
   }
 } 

@@ -7,19 +7,6 @@ import Sidebar from './Sidebar';
 import stylesApp from "../styles/App.module.css";
 import Notification from './Notification';
 
-const initialState = {
-  firstName: '',
-  lastName: '',
-  email: '',
-  countryCode: '+971',
-  phone: '',
-  company: '',
-  employees: '',
-  industry: '',
-  location: '',
-  message: '',
-};
-
 // Country code list (country name, code, flag)
 const countryCodes = [
   { name: 'United Arab Emirates', code: '+971', flag: '🇦🇪' },
@@ -76,7 +63,6 @@ const countryCodes = [
   { name: 'Norway', code: '+47', flag: '🇳🇴' },
   { name: 'Oman', code: '+968', flag: '🇴🇲' },
   { name: 'Philippines', code: '+63', flag: '🇵🇭' },
-  { name: 'Philippines', code: '+63', flag: '🇵🇭' },
   { name: 'Poland', code: '+48', flag: '🇵🇱' },
   { name: 'Portugal', code: '+351', flag: '🇵🇹' },
   { name: 'Qatar', code: '+974', flag: '🇶🇦' },
@@ -100,6 +86,20 @@ const countryCodes = [
   { name: 'Yemen', code: '+967', flag: '🇾🇪' },
   // ... (add more as needed)
 ];
+
+const initialState = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  mobile: '',
+  countryCode: countryCodes[0].code,
+  phoneNumber: '',
+  company: '',
+  employees: '',
+  industry: '',
+  location: '',
+  message: '',
+};
 
 function getActiveTab(location) {
   if (location.pathname === '/') {
@@ -136,7 +136,8 @@ export default function ContactForm({ onClose }) {
     if (!form.firstName.trim()) errs.firstName = 'Required';
     if (!form.lastName.trim()) errs.lastName = 'Required';
     if (!form.email.trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email)) errs.email = 'Valid email required';
-    if (!form.phone.trim() || form.phone.length < 8) errs.phone = 'Valid phone required';
+    if (!form.phoneNumber.trim() || !/^\d{7,}$/.test(form.phoneNumber.replace(/\s+/g, ''))) errs.phoneNumber = 'Enter a valid phone number';
+    if (!form.countryCode) errs.countryCode = 'Select country code';
     if (!form.company.trim()) errs.company = 'Required';
     if (!form.employees.trim() || isNaN(form.employees)) errs.employees = 'Required';
     if (!form.industry.trim()) errs.industry = 'Required';
@@ -145,11 +146,15 @@ export default function ContactForm({ onClose }) {
   };
 
   const handleChange = e => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handlePhoneChange = value => {
-    setForm({ ...form, phone: value });
+    const { name, value } = e.target;
+    setForm(prev => {
+      if (name === 'countryCode' || name === 'phoneNumber') {
+        const newForm = { ...prev, [name]: value };
+        newForm.mobile = `${newForm.countryCode}${newForm.phoneNumber}`;
+        return newForm;
+      }
+      return { ...prev, [name]: value };
+    });
   };
 
   const handleSubmit = async e => {
@@ -163,7 +168,7 @@ export default function ContactForm({ onClose }) {
         'service_9fl3k3h',
         'template_r9o3l6m',
         {
-          message: `New Demo Request\n\n| Field     | Value                  |\n|-----------|------------------------|\n| Name      | ${form.firstName} ${form.lastName} |\n| Email     | ${form.email}          |\n| Phone     | ${form.countryCode} ${form.phone} |\n| Company   | ${form.company}        |\n| Employees | ${form.employees}      |\n| Industry  | ${form.industry}       |\n| Location  | ${form.location}       |\n| Message   | ${form.message}        |\n\nRegards,\nSama Health Website`,
+          message: `New Demo Request\n\n| Field     | Value                  |\n|-----------|------------------------|\n| Name      | ${form.firstName} ${form.lastName} |\n| Email     | ${form.email}          |\n| Mobile    | ${form.mobile}         |\n| Company   | ${form.company}        |\n| Employees | ${form.employees}      |\n| Industry  | ${form.industry}       |\n| Location  | ${form.location}       |\n| Message   | ${form.message}        |\n\nRegards,\nSama Health Website`,
           to_email: 'engr.mubasharnazir@gmail.com',
         },
         'YqyF5KFi6-yKQp7Hn'
@@ -219,123 +224,148 @@ export default function ContactForm({ onClose }) {
         )}
         <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       </nav>
-      <section className={styles.heroSectionContact}>
-        <div className={styles.heroContentContact}>
-          <div className={styles.heroLeftContact}>
-            <h1 className={styles.heroHeadingContact}>Build a workplace where you can make a difference.</h1>
-            <button
-              className={styles.heroBtnContact}
-              onClick={() => {
-                if (formRef.current) {
-                  formRef.current.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-            >
-              Request a demo
-            </button>
+      <div className={styles.container}>
+        <section className={styles.heroSectionContact}>
+          <div className={styles.heroContentContact}>
+            <div className={styles.heroLeftContact}>
+              <h1 className={styles.heroHeadingContact}>Build a workplace where you can make a difference.</h1>
+              <button
+                className={styles.heroBtnContact}
+                onClick={() => {
+                  if (formRef.current) {
+                    formRef.current.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+              >
+                Request a demo
+              </button>
+            </div>
+            <div className={styles.heroRightContact}>
+              <img src="/assets/4921280 1.png" alt="Workplace Illustration" className={styles.heroImgContact} />
+            </div>
           </div>
-          <div className={styles.heroRightContact}>
-            <img src="/assets/4921280 1.png" alt="Workplace Illustration" className={styles.heroImgContact} />
-          </div>
-        </div>
-      </section>
-      {/* Companies Section */}
+        </section>
+      </div>
+      {/* Companies Section OUTSIDE container */}
       <section className={styles.companiesSection}>
-        <h2 className={styles.companiesHeading}>Companies we have worked with</h2>
-        <div className={styles.companiesLogosRow}>
-          <img src="/assets/aljazera.svg" alt="Company 1" className={styles.companyLogo} />
-          <img src="/assets/arabia.png" alt="Company 2" className={styles.companyLogo} />
-          <img src="/assets/khaleej-times-logo.svg" alt="Company 3" className={styles.companyLogo} />
-          <img src="/assets/edge.webp" alt="Company 4" className={styles.companyLogo} />
-          <img src="/assets/gulf-news-logo.png" alt="Company 4" className={styles.companyLogo} />
+        <div className={styles.companiesInner}>
+          <h2 className={styles.companiesHeading}>Companies we have worked with</h2>
+          <div className={styles.companiesLogosRow}>
+            <img src="/assets/aljazera.svg" alt="Company 1" className={styles.companyLogo} />
+            <img src="/assets/arabia.png" alt="Company 2" className={styles.companyLogo} />
+            <img src="/assets/khaleej-times-logo.svg" alt="Company 3" className={styles.companyLogo} />
+            <img src="/assets/edge.webp" alt="Company 4" className={styles.companyLogo} />
+            <img src="/assets/gulf-news-logo.png" alt="Company 4" className={styles.companyLogo} />
+          </div>
         </div>
       </section>
-      <div ref={formRef} className={styles.formCard}>
-        <>
-          <h2 className={styles.formHeading}>Request demo</h2>
-          <div className={styles.formDescription}>
-            We'd love to hear from you. Fill out the form below and our team will get back to you as soon as possible.
-          </div>
-          <form className={styles.formNew} onSubmit={handleSubmit} autoComplete="off">
-            <div className={styles.formRow}>
-              <div className={styles.formField}>
-                <label htmlFor="firstName">First Name *</label>
-                <input id="firstName" name="firstName" value={form.firstName} onChange={handleChange} autoComplete="given-name" />
-                {errors.firstName && <span className={styles.error}>{errors.firstName}</span>}
-              </div>
-              <div className={styles.formField}>
-                <label htmlFor="lastName">Last Name *</label>
-                <input id="lastName" name="lastName" value={form.lastName} onChange={handleChange} autoComplete="family-name" />
-                {errors.lastName && <span className={styles.error}>{errors.lastName}</span>}
-              </div>
+      <div className={styles.container}>
+        <div ref={formRef} className={styles.formCard}>
+          <>
+            <h2 className={styles.formHeading}>Request demo</h2>
+            <div className={styles.formDescription}>
+              We'd love to hear from you. Fill out the form below and our team will get back to you as soon as possible.
             </div>
-            <div className={styles.formRow}>
-              <div className={styles.formField}>
-                <label htmlFor="email">Email *</label>
-                <input id="email" name="email" value={form.email} onChange={handleChange} autoComplete="email" />
-                {errors.email && <span className={styles.error}>{errors.email}</span>}
-              </div>
-              <div className={styles.formField}>
-                <label htmlFor="phone">Phone *</label>
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                  <select
-                    name="countryCode"
-                    value={form.countryCode}
-                    onChange={handleChange}
-                    className={styles.countryCodeSelect}
-                    style={{ marginRight: '0.5rem', height: '2.5rem', borderRadius: '6px', border: '1px solid #ccc', fontSize: '1rem' }}
-                  >
-                    {countryCodes.map((c) => (
-                      <option key={c.code + c.name} value={c.code}>
-                        {c.flag} {c.code}
-                      </option>
-                    ))}
-                  </select>
-                  <input
-                    id="phone"
-                    name="phone"
-                    value={form.phone}
-                    onChange={handleChange}
-                    autoComplete="tel"
-                    style={{ flex: 1 }}
-                  />
+            <form className={styles.formNew} onSubmit={handleSubmit} autoComplete="off">
+              <div className={styles.formRow}>
+                <div className={styles.formField}>
+                  <label htmlFor="firstName">First Name *</label>
+                  <input id="firstName" name="firstName" value={form.firstName} onChange={handleChange} autoComplete="given-name" />
+                  {errors.firstName && <span className={styles.error}>{errors.firstName}</span>}
                 </div>
-                {errors.phone && <span className={styles.error}>{errors.phone}</span>}
+                <div className={styles.formField}>
+                  <label htmlFor="lastName">Last Name *</label>
+                  <input id="lastName" name="lastName" value={form.lastName} onChange={handleChange} autoComplete="family-name" />
+                  {errors.lastName && <span className={styles.error}>{errors.lastName}</span>}
+                </div>
               </div>
-            </div>
-            <div className={styles.formRow}>
-              <div className={styles.formField}>
-                <label htmlFor="company">Company *</label>
-                <input id="company" name="company" value={form.company} onChange={handleChange} />
-                {errors.company && <span className={styles.error}>{errors.company}</span>}
+              <div className={styles.formRow}>
+                <div className={styles.formField}>
+                  <label htmlFor="phoneNumber">Mobile *</label>
+                  <div style={{ display: 'flex', flexDirection: 'row', gap: 0, alignItems: 'center', width: '100%' }}>
+                    <select
+                      id="countryCode"
+                      name="countryCode"
+                      value={form.countryCode}
+                      onChange={handleChange}
+                      style={{
+                        minWidth: '90px',
+                        fontSize: '1rem',
+                        borderRadius: '0.5rem 0 0 0.5rem',
+                        border: '1px solid #e2e8f0',
+                        borderRight: 'none',
+                        padding: '0.5rem',
+                        height: '42px',
+                        background: '#fff',
+                      }}
+                    >
+                      {countryCodes.map(c => (
+                        <option key={c.code} value={c.code}>{c.flag} {c.code}</option>
+                      ))}
+                    </select>
+                    <input
+                      id="phoneNumber"
+                      name="phoneNumber"
+                      value={form.phoneNumber}
+                      onChange={handleChange}
+                      autoComplete="tel"
+                      placeholder="e.g. 501234567"
+                      style={{
+                        width: '120px',
+                        minWidth: 0,
+                        flex: '1 1 120px',
+                        borderRadius: '0 0.5rem 0.5rem 0',
+                        border: '1px solid #e2e8f0',
+                        borderLeft: 'none',
+                        height: '42px',
+                        background: '#fff',
+                      }}
+                      maxLength={10}
+                    />
+                  </div>
+                  {errors.countryCode && <span className={styles.error}>{errors.countryCode}</span>}
+                  {errors.phoneNumber && <span className={styles.error}>{errors.phoneNumber}</span>}
+                </div>
+                <div className={styles.formField}>
+                  <label htmlFor="email">Email *</label>
+                  <input id="email" name="email" value={form.email} onChange={handleChange} autoComplete="email" />
+                  {errors.email && <span className={styles.error}>{errors.email}</span>}
+                </div>
               </div>
-              <div className={styles.formField}>
-                <label htmlFor="employees">Number of Employees *</label>
-                <input id="employees" name="employees" value={form.employees} onChange={handleChange} />
-                {errors.employees && <span className={styles.error}>{errors.employees}</span>}
+              <div className={styles.formRow}>
+                <div className={styles.formField}>
+                  <label htmlFor="company">Company *</label>
+                  <input id="company" name="company" value={form.company} onChange={handleChange} />
+                  {errors.company && <span className={styles.error}>{errors.company}</span>}
+                </div>
+                <div className={styles.formField}>
+                  <label htmlFor="employees">Number of Employees *</label>
+                  <input id="employees" name="employees" value={form.employees} onChange={handleChange} />
+                  {errors.employees && <span className={styles.error}>{errors.employees}</span>}
+                </div>
               </div>
-            </div>
-            <div className={styles.formRow}>
-              <div className={styles.formField}>
-                <label htmlFor="industry">Industry *</label>
-                <input id="industry" name="industry" value={form.industry} onChange={handleChange} />
-                {errors.industry && <span className={styles.error}>{errors.industry}</span>}
+              <div className={styles.formRow}>
+                <div className={styles.formField}>
+                  <label htmlFor="industry">Industry *</label>
+                  <input id="industry" name="industry" value={form.industry} onChange={handleChange} />
+                  {errors.industry && <span className={styles.error}>{errors.industry}</span>}
+                </div>
+                <div className={styles.formField}>
+                  <label htmlFor="location">Location *</label>
+                  <input id="location" name="location" value={form.location} onChange={handleChange} />
+                  {errors.location && <span className={styles.error}>{errors.location}</span>}
+                </div>
               </div>
-              <div className={styles.formField}>
-                <label htmlFor="location">Location *</label>
-                <input id="location" name="location" value={form.location} onChange={handleChange} />
-                {errors.location && <span className={styles.error}>{errors.location}</span>}
+              <div className={styles.formFieldFull}>
+                <label htmlFor="message">Message</label>
+                <textarea id="message" name="message" value={form.message} onChange={handleChange} placeholder="Please enter your message/query here" />
               </div>
-            </div>
-            <div className={styles.formFieldFull}>
-              <label htmlFor="message">Message</label>
-              <textarea id="message" name="message" value={form.message} onChange={handleChange} placeholder="Please enter your message/query here" />
-            </div>
-            {errors.submit && <span className={styles.error}>{errors.submit}</span>}
-            <button type="submit" className={styles.submitBtnNew} disabled={submitting}>{submitting ? 'Sending...' : 'Submit'}</button>
-            {onClose && <button type="button" className={styles.closeBtn} onClick={onClose}>Close</button>}
-          </form>
-        </>
+              {errors.submit && <span className={styles.error}>{errors.submit}</span>}
+              <button type="submit" className={styles.submitBtnNew} disabled={submitting}>{submitting ? 'Sending...' : 'Submit'}</button>
+              {onClose && <button type="button" className={styles.closeBtn} onClick={onClose}>Close</button>}
+            </form>
+          </>
+        </div>
       </div>
       <Footer />
     </div>

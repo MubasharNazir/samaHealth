@@ -79,23 +79,23 @@ function MainApp() {
           For Business
         </button>
         { !sidebarOpen && (
-          <button className={styles.hamburger} onClick={() => setSidebarOpen(true)} aria-label="Open menu">
-            <span />
-            <span />
-            <span />
-          </button>
+        <button className={styles.hamburger} onClick={() => setSidebarOpen(true)} aria-label="Open menu">
+          <span />
+          <span />
+          <span />
+        </button>
         )}
         <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       </nav>
       <div className={styles.mainContent}>
-        <Hero />
-        <TherapistStats />
-        <BestTherapists />
-        <ConnectTherapist />
-        <div style={{ background: '#fdf8ef', height: '6rem', width: '100%' }} />
-        <Testimonials />
-        <PricingFAQ />
-        <MeetupSection />
+      <Hero />
+      <TherapistStats />
+      <BestTherapists />
+      <ConnectTherapist />
+      <div style={{ background: '#fdf8ef', height: '6rem', width: '100%' }} />
+      <Testimonials />
+      <PricingFAQ />
+      <MeetupSection />
       </div>
       <Footer />
     </div>
